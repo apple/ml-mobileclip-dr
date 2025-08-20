@@ -1,0 +1,58 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "raygen"
+version = "0.1.0"
+description = "A package for large-scale data generation from ML models using Ray."
+authors = [
+    { name = "Fartash Faghri", email = "fartash@apple.com"},
+    { name = "Cem Koc", email = "cem_koc@apple.com"},
+]
+requires-python = ">=3.10"
+readme = "README.md"
+
+# Minimal dependencies needed to make raygen work locally.
+[project.optional-dependencies]
+dev = [
+    "ray[data,train,tune,serve]==2.22.0",
+    "webdataset==0.2.111",
+    "Pympler==1.1",  # Standalone package for measuring size of python objects
+    "jsonlines==4.0.0",
+    "sentencepiece==0.2.0",
+    "open_clip_torch==2.31.0",
+    "torch==2.5.1",
+    "torchvision==0.20.1",
+    "torchdata==0.9.0",
+    "transformers==4.49.0",
+    "loguru==0.7.3",
+    "zstandard==0.23.0",
+    "cloudpathlib==0.21.0",
+    "sentencepiece==0.2.0",
+    "nltk==3.9.1",
+    "retrie==0.3.1",
+    "pybase64==1.4.1",
+    "boto3==1.37.13",
+    "botocore==1.37.13",
+    "google-cloud-storage==3.1.0",
+    "isort",
+    "black",
+]
+
+[tool.isort]
+profile = "black"
+line_length = 88
+
+[tool.black]
+line-length = 88
+target-version = ['py38', 'py39']
+
+[tool.flake8]
+max-line-length = 88
+exclude = [
+    # No need to traverse our git directory
+    ".git",
+    # There's no value in checking cache directories
+    "__pycache__"
+]
