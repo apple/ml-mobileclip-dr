@@ -11,7 +11,7 @@ supports processing petabytes of data and billions of samples on 10,000 GPUs
 and more.  The code also supports elasticity where processing can start with 
 a minimum number of workers and gradually scaled up.
 
-- **[MobileCLIP2: Improving Multi-Modal Reinforced Training](). (TMLR 2025)**
+- **[MobileCLIP2: Improving Multi-Modal Reinforced Training](http://arxiv.org/abs/2508.20691). (TMLR August 2025 <mark>Featured</mark>)**
 Fartash Faghri, Pavan Kumar Anasosalu Vasu, Cem Koc, Vaishaal Shankar, 
 Alexander Toshev, Oncel Tuzel, Hadi Pouransari.
 - **[MobileCLIP: Fast Image-Text Models through Multi-Modal Reinforced 
@@ -143,12 +143,14 @@ Our codebase is built using multiple opensource contributions, please see [ACKNO
 
 If you found this code useful, please cite the following papers:
 
-    @misc{faghri2025mobileclip2,
-      author = {Faghri, Fartash and Vasu, Pavan Kumar Anasosalu and and Koc, 
-      Cem and Shankar, Vaishaal, Toshev and Alexander and Tuzel, Oncel and 
-      Pouransari, Hadi},
-      title = {MobileCLIP2: Improving Multi-Modal Reinforced Training},
-      year = {2025},
+    @article{faghri2025mobileclip2,
+      title={Mobile{CLIP}2: Improving Multi-Modal Reinforced Training},
+      author={Fartash Faghri and Pavan Kumar Anasosalu Vasu and Cem Koc and Vaishaal Shankar and Alexander T Toshev and Oncel Tuzel and Hadi Pouransari},
+      journal={Transactions on Machine Learning Research},
+      issn={2835-8856},
+      year={2025},
+      url={https://openreview.net/forum?id=WeF9zolng8},
+      note={Featured Certification}
     }
 
 
