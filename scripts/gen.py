@@ -565,7 +565,7 @@ class EmbeddingModel(Model):
                 dim=0,
             )
             item = data[item_idx]
-            item["image_emb{self.tag_suffix}"] = image_embedding.cpu().numpy()
+            item[f"image_emb{self.tag_suffix}"] = image_embedding.cpu().numpy()
             num_text = num_texts[tensor_index]
             num_text_cur = 0
             for k, v in num_text:
