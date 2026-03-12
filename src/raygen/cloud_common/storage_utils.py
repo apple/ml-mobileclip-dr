@@ -17,7 +17,6 @@ import boto3
 import boto3.session
 import botocore
 import botocore.exceptions
-import notary_client.conductor as conductor  # TODO: OSS remove
 import urllib3
 from boto3.s3.transfer import TransferConfig
 from google.cloud import storage as gstorage
@@ -28,8 +27,8 @@ from .retrying import retry
 _MiB: int = int(1024**2)
 _GiB: int = int(1024**3)
 
-_DEFAULT_AWS_REGION = "us-west-2"  # OSS remove
-_DEFAULT_AWS_PROFILE = "p8"  # OSS remove
+_DEFAULT_AWS_REGION = ""
+_DEFAULT_AWS_PROFILE = ""
 
 AWS_DEFAULT_REGION_VARNAME: str = "AWS_DEFAULT_REGION"
 AWS_ACCESS_KEY_ID_VARNAME: str = "AWS_ACCESS_KEY_ID"
@@ -134,9 +133,6 @@ def get_s3_client(path: str = None):
     if path is None or path.startswith("s3"):
         s3_session = aws_session_from_env_vars()
         s3_client = s3_session.client("s3")
-    elif path.startswith("conductor"):
-        # TODO: OSS remove
-        s3_client = conductor.get_s3_client()
     else:
         s3_session = aws_session_from_path(path)
         s3_client = s3_session.client("s3")
@@ -147,9 +143,6 @@ def get_client(path: str = None):
     if path is None or path.startswith("s3"):
         s3_session = aws_session_from_env_vars()
         client = s3_session.client("s3")
-    elif path.startswith("conductor"):
-        # TODO: OSS remove
-        client = conductor.get_s3_client()
     elif path.startswith("gs"):
         project_name = parse_gs_project_name(path)
         client = gstorage.Client(project_name)
@@ -177,7 +170,7 @@ def parse_remote_path(path: str) -> Tuple[str, str, str]:
 
     Args:
     - remote_path (str): The remote path in the format
-        "<s3|gs|conductor|profile>://bucket/key"  # OSS remove
+        "<s3|gs|profile>://bucket/key"
 
     Returns:
     - tuple: A tuple containing the bucket and key
